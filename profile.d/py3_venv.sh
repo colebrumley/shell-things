@@ -1,5 +1,4 @@
 #!/bin/sh
-set -o allexport
-VIRTUAL_ENV="~/py3.5"
-PATH="$VIRTUAL_ENV/bin:$PATH"
+export VIRTUAL_ENV="$HOME/py3.5"
+export PATH="$VIRTUAL_ENV/bin:$PATH"
 unset PYTHON_HOME
