@@ -24,11 +24,17 @@ if [[ $- == *i* ]] && is_installed tput; then
             bgRed bgGreen bgBlue bgBlack bgCyan bgMagenta bgYellow bgWhite bgBlack tReset
 fi
 
+OS=$(uname -s)
+ARCH=$(uname -m)
+VER=$(uname -r)
+
 # PS1 is in the format `[ last_exit_code ] user@host:workdir`
 PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
 
 # Add ~/bin to PATH
 PATH="$HOME/bin:$PATH"
+
+export PATH OS ARCH VER PS1
 
 # Include ~/.profile.d/*, and let shellcheck ignore it
 # shellcheck source=/dev/null
