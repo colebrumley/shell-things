@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# NOTE: Since ~/.profile is looking for ~/.profile.d/*.sh, this will
+#       be ignored under normal circumstances. It's intended to be called
+#       from a script to enable easily writing output to syslog.
+
+# This command does the following:
+#   1. Redirects all stdout/stderr output to syslog via logger
+#   2. Applies a syslog tag (AutomationScript=scriptname)
+#   3. Redirects all logger input back out to stderr
+#
+# Sourcing this script will ensure that all output is written to both syslog
+# and the terminal at the expense of compressing stderr and stdout into a
+# single stream.
+exec 1> >(logger -s -t "AutomationScript=$(basename "$0")") 2>&1
