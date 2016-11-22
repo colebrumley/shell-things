@@ -1,0 +1,7 @@
+dependencies:
+  override:
+    - apt-get -q update && apt-get -qy install shellcheck make bash
+
+test:
+  override:
+    - make test
