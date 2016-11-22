@@ -12,8 +12,10 @@ bucketsize() {
     echo "$bucket is using $mb Mb"
 }
 
-if [[ -f ~/.aws_session ]]; then
+# This checks for an AWS MFA session and reruns the auth script if it doesn't exist
+if [[ -f ~/.aws_session ]]; then 
     . ~/.aws_session
 else
-    ~/lib/lumeris/aws/util/mf
+    f=~/lib/lumeris/aws/util/mf
+    [[ -f $f ]] && $f
 fi
