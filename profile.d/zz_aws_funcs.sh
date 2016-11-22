@@ -5,15 +5,16 @@ bucketsize() {
     local bucket=${1:-rundeck-execution-log-storage}
     echo "Pulling stats..."
     bytes=$(aws s3api list-objects \
-        --bucket $bucket \
+        --bucket "$bucket" \
         --output json \
         --query "sum(Contents[].Size)")
-    mb=$(echo $bytes/1024/1024 | bc)
+    mb=$(echo "$bytes/1024/1024" | bc)
     echo "$bucket is using $mb Mb"
 }
 
 # This checks for an AWS MFA session and reruns the auth script if it doesn't exist
 if [[ -f ~/.aws_session ]]; then 
+    # shellcheck source=/dev/null
     . ~/.aws_session
 else
     f=~/lib/lumeris/aws/util/mf
