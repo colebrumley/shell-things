@@ -37,5 +37,5 @@ PATH="$HOME/bin:$PATH"
 export PATH OS ARCH VER PS1
 
 # Include ~/.profile.d/*, and let shellcheck ignore it
-# shellcheck source=/dev/null
-[[ -d ~/.profile.d ]] && for p in ~/.profile.d/*.sh; do . $p; done
+# shellcheck disable=SC1090
+[[ -d ~/.profile.d ]] && for p in ~/.profile.d/*.sh; do . "$p"; done

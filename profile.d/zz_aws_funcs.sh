@@ -14,7 +14,7 @@ bucketsize() {
 
 # This checks for an AWS MFA session and reruns the auth script if it doesn't exist
 if [[ -f ~/.aws_session ]]; then 
-    # shellcheck source=/dev/null
+    # shellcheck disable=SC1090
     . ~/.aws_session
 else
     f=~/lib/lumeris/aws/util/mf
