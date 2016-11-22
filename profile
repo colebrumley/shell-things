@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Helper func for writing something to STDERR
-err_echo() { >&2 echo "${@}"; }
+err() { >&2 echo "${@}"; }
 
 # Helper func for bailing out of a script
-err_out() { err_echo "${@}"; exit 1; }
+err_out() { err "${@}"; exit 1; }
 
 # Slightly better than `which`: http://unix.stackexchange.com/a/85250
 is_installed() { command -v "${1}" >/dev/null 2>&1 || return 1; }
