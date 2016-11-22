@@ -1,5 +1,5 @@
 SHELL = bash
-SHELLCHECK_CMD = shellcheck --color=always --shell=bash
+SHELLCHECK_CMD = shellcheck --shell=bash
 
 test: 
 	$(SHELLCHECK_CMD) profile
