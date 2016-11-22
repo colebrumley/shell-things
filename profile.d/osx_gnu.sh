@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -o allexport
 # If on OSX and GNU coreutils is installed, use them over the BSD variants
 [[ -d /usr/local/opt/coreutils/libexec/gnubin ]] && \

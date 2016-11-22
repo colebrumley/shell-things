@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 PY3_PATH="$HOME/py3.5"
 PY2_PATH="$HOME/py2.7"
