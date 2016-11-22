@@ -8,3 +8,9 @@ test:
 		$(SHELLCHECK_CMD) $$f && \
 		echo " OK!" ; \
     done
+
+install: test
+	if [[ -e ~/.profile ]] || [[ -e ~/.profile.d ]]; then \
+		echo ~/.profile or ~/.profile.d exist; exit 1; fi
+	ln -s "$$(pwd)/profile" ~/.profile
+	ln -s "$$(pwd)/profile.d" ~/.profile.d
