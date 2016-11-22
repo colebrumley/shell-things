@@ -1,4 +1,4 @@
-# shell-things
+# shell-things [![CircleCI](https://circleci.com/gh/colebrumley/shell-things.svg?style=svg)](https://circleci.com/gh/colebrumley/shell-things)
 My shell profiles and such.
 
 These are all Bash profiles.
