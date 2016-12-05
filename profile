@@ -32,11 +32,11 @@ VER=$(uname -r)
 PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
 
 # Add /usr/local/sbin to PATH
-read -r PATH <<< $(sed "s,/usr/local/sbin:,,g" <<< $PATH)
+read -r PATH <<< "$(sed "s,/usr/local/sbin:,,g" <<< "$PATH")"
 PATH="/usr/local/sbin:$PATH"
 
 # Add ~/bin to PATH
-read -r PATH <<< $(sed "s,$HOME/bin:,,g" <<< $PATH)
+read -r PATH <<< "$(sed "s,$HOME/bin:,,g" <<< "$PATH")"
 PATH="$HOME/bin:$PATH"
 
 export PATH OS ARCH VER PS1
