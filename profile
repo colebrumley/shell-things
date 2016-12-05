@@ -32,7 +32,7 @@ VER=$(uname -r)
 PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
 
 # Add ~/bin to PATH
-PATH="$HOME/bin:$PATH"
+PATH="$HOME/bin:/usr/local/sbin:$PATH"
 
 export PATH OS ARCH VER PS1
 
