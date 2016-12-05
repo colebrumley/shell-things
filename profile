@@ -9,6 +9,14 @@ err_out() { err "${@}"; exit 1; }
 # Slightly better than `which`: http://unix.stackexchange.com/a/85250
 is_installed() { command -v "${1}" >/dev/null 2>&1 || return 1; }
 
+# Adds a directory to $PATH, making sure it's not duplicated
+add_to_path() {
+    local dir=$1
+    read -r PATH <<< "$(sed "s,$dir:,,g" <<< "$PATH")"
+    PATH="$dir:$PATH"
+    export PATH
+}
+
 # Set some standard color vars if this is an interactive session
 if [[ $- == *i* ]] && is_installed tput; then
     fgRed=$(tput setaf 1)     fgGreen=$(tput setaf 2) \
@@ -32,12 +40,10 @@ VER=$(uname -r)
 PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
 
 # Add /usr/local/sbin to PATH
-read -r PATH <<< "$(sed "s,/usr/local/sbin:,,g" <<< "$PATH")"
-PATH="/usr/local/sbin:$PATH"
+add_to_path /usr/local/sbin
 
 # Add ~/bin to PATH
-read -r PATH <<< "$(sed "s,$HOME/bin:,,g" <<< "$PATH")"
-PATH="$HOME/bin:$PATH"
+add_to_path "$HOME/bin"
 
 export PATH OS ARCH VER PS1
 

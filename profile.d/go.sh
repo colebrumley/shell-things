@@ -1,5 +1,3 @@
 #!/bin/bash
-set -o allexport
-GOPATH="$HOME/lib/go"
-read -r PATH <<< "$(sed "s,$GOPATH/bin:,,g" <<< "$PATH")"
-PATH="$GOPATH/bin:$PATH"
+export GOPATH="$HOME/lib/go"
+add_to_path "$GOPATH/bin"

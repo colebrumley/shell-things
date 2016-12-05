@@ -3,11 +3,10 @@ GNU_BIN=/usr/local/opt/coreutils/libexec/gnubin
 GNU_MAN=/usr/local/opt/coreutils/libexec/gnuman
 
 cfg_osx_gnu(){
-    read -r PATH <<< "$(sed "s,$GNU_BIN:,,g" <<< "$PATH")"
+    add_to_path "$GNU_BIN"
     read -r MANPATH <<< "$(sed "s,$GNU_MAN:,,g" <<< "$MANPATH")"
-    PATH="$GNU_BIN:$PATH"
     MANPATH="$GNU_MAN:$MANPATH"
-    export PATH MANPATH
+    export MANPATH
 }
 
 # If on OSX and GNU coreutils is installed, use them over the BSD variants
