@@ -3,6 +3,7 @@
 # $1 = Window title
 # $2 = Prompt
 dialog_prompt() {
+	is_installed osascript || return 1
 	osascript -e \
 	"tell application \"SystemUIServer\"  
 		set thisvar to text returned of (display dialog \"$2\" with title \"$1\" default answer \"\" buttons {\"OK\", \"Cancel\"} default button 1 cancel button 2)  
