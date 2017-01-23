@@ -1,17 +1,13 @@
 #!/bin/bash
 
-PY3_PATH="$HOME/py3.5"
-PY2_PATH="$HOME/py2.7"
-
 setpy(){
-    for p in "$PY2_PATH/bin:" "$PY3_PATH/bin:"; do
-        PATH="${PATH//$p/}"
+    for d in $HOME/py*/bin; do 
+        PATH="${PATH//$d:}"
     done
-    [ "$1" == "3" ] && VIRTUAL_ENV="$PY3_PATH"
-    [ "$1" == "2" ] && VIRTUAL_ENV="$PY2_PATH"
+    VIRTUAL_ENV="$HOME/py$1"
     PATH="$VIRTUAL_ENV/bin:$PATH"
     export VIRTUAL_ENV PATH
     unset PYTHON_HOME
 }
 
-setpy 3
+setpy 3.5
