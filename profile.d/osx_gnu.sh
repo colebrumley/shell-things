@@ -4,7 +4,7 @@ GNU_MAN=/usr/local/opt/coreutils/libexec/gnuman
 
 cfg_osx_gnu(){
     add_to_path "$GNU_BIN"
-    read -r MANPATH <<< "$(sed "s,$GNU_MAN:,,g" <<< "$MANPATH")"
+    MANPATH="${MANPATH//$GNU_MAN:/}"
     MANPATH="$GNU_MAN:$MANPATH"
     export MANPATH
 }

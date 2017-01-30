@@ -10,4 +10,4 @@ setpy(){
     unset PYTHON_HOME
 }
 
-setpy 3.5
+[[ -d $HOME/py3.5/bin ]] && setpy 3.5
