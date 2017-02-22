@@ -6,4 +6,5 @@ dependencies:
 
 test:
   override:
+    - . profile
     - make test
