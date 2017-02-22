@@ -8,6 +8,7 @@ test:
 		$(SHELLCHECK_CMD) $$f && \
 		echo " OK!" ; \
     done
+	bats tests
 
 install: test
 	if [[ -e ~/.profile ]] || [[ -e ~/.profile.d ]]; then \

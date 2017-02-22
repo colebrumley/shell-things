@@ -47,6 +47,9 @@ add_to_path "$HOME/bin"
 
 export PATH OS ARCH VER PS1
 
+# Export global funcs (for ease of bats testing)
+export -f err err_out is_installed add_to_path
+
 # Include ~/.profile.d/*, and let shellcheck ignore it
 # shellcheck disable=SC1090
 [[ -d ~/.profile.d ]] && for p in ~/.profile.d/*.sh; do . "$p"; done
