@@ -4,11 +4,11 @@ SHELLCHECK_CMD = shellcheck --shell=bash
 test: 
 	$(SHELLCHECK_CMD) profile
 	for f in profile.d/*.sh ; do \
-        echo -n Checking $$f... ; \
+		echo -n Checking $$f... ; \
 		$(SHELLCHECK_CMD) $$f && \
 		echo " OK!" ; \
-    done
-	bats tests
+	done
+	bash -c '. profile; bats tests'
 
 install: test
 	if [[ -e ~/.profile ]] || [[ -e ~/.profile.d ]]; then \
