@@ -3,7 +3,7 @@ SHELLCHECK_CMD = shellcheck --shell=bash
 
 test: 
 	$(SHELLCHECK_CMD) profile
-	for f in **/*.sh ; do \
+	for f in profile.d/*.sh ; do \
         echo -n Checking $$f... ; \
 		$(SHELLCHECK_CMD) $$f && \
 		echo " OK!" ; \
