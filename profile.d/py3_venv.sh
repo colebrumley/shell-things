@@ -10,4 +10,4 @@ setpy(){
     unset PYTHON_HOME
 }
 
-[[ -d $HOME/py3.5/bin ]] && setpy 3.5
+[[ -d $HOME/py3/bin ]] && setpy 3
