@@ -19,7 +19,7 @@ ff(){
         break
     done
 
-    screen -d -S ff -m bash -c "$FF --profile \"$FF_PROFILE\""
+    screen -d -S "ff" -m bash -c "$FF --profile \"$FF_PROFILE\""
 }
 
 export -f ff
