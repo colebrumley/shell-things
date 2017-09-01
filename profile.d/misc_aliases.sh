@@ -3,4 +3,4 @@ alias c=clear
 alias exut=exit
 alias exity=exit
 alias exiy=exit
-eval "$(thefuck --alias)"
+is_installed thefuck && eval "$(thefuck --alias)"
