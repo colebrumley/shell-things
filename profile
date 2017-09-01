@@ -37,7 +37,7 @@ ARCH=$(uname -m)
 VER=$(uname -r)
 
 # PS1 is in the format `[ last_exit_code ] user@host:workdir`
-PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
+[[ $SHELL == /bin/bash ]] && PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
 
 # Add /usr/local/sbin to PATH
 add_to_path /usr/local/sbin
