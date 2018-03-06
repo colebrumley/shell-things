@@ -10,3 +10,8 @@ dialog_prompt() {
 		log thisvar
 	end tell" 2>&1
 }
+
+notify(){
+	is_installed osascript || return 1
+	osascript -e "display notification \"${@:2}\" with title \"${1:-Shell Notification}\""
+}
