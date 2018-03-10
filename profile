@@ -37,6 +37,7 @@ ARCH=$(uname -m)
 VER=$(uname -r)
 
 # PS1 is in the format `[ last_exit_code ] user@host:workdir`
+# shellcheck disable=SC1117
 [[ $SHELL == /bin/bash ]] && PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
 
 # Add /usr/local/sbin to PATH

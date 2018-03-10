@@ -13,5 +13,5 @@ dialog_prompt() {
 
 notify(){
 	is_installed osascript || return 1
-	osascript -e "display notification \"${@:2}\" with title \"${1:-Shell Notification}\""
+	osascript -e "display notification \"${*:2}\" with title \"${1:-Shell Notification}\""
 }

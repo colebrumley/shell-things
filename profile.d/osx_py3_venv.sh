@@ -18,7 +18,8 @@ setpy(){
 export -f setpy
 
 pypip_bak(){
-    local THISPY="$(python -V 2>&1 | awk '{print $2}')"
+    local THISPY
+    THISPY="$(python -V 2>&1 | awk '{print $2}')"
     pip freeze > "$HOME/lib/python${THISPY:0:1}_pip_freeze.txt"
 }
 export -f pypip_bak
@@ -29,10 +30,10 @@ pypip_update(){
 export -f pypip_update
 
 pyupdate_brew(){
-    for ver in $(brew list --versions | grep "^python" | awk '{print $2}'); do
+    for ver in $(brew list --versions | grep "^python" | awk '{$1=""; print $0}'); do
         local major_version=${ver:0:1}
         if [[ -d "$HOME/lib/py$ver" ]]; then
-            echo Python $ver is already configured
+            echo Python "$ver" is already configured
         else
             if [[ $major_version == 2 ]]; then
                 src_str="/usr/local/Cellar/python@$major_version/$ver/bin/python$major_version"

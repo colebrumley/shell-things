@@ -1,13 +1,8 @@
-SHELL = bash
 SHELLCHECK_CMD = shellcheck --shell=bash
 
 test: 
 	$(SHELLCHECK_CMD) profile
-	for f in profile.d/*.sh ; do \
-		echo -n Checking $$f... ; \
-		$(SHELLCHECK_CMD) $$f && \
-		echo " OK!" ; \
-	done
+	$(foreach f,$(wildcard profile.d/*.sh),$(SHELLCHECK_CMD) $f || exit;)
 	bash -c '. profile; bats tests'
 
 install: test
