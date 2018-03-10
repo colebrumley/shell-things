@@ -4,6 +4,7 @@
 # Usage: ff [port] [profile]
 # The port is optional and defaults to 8888
 # The profile is also optional and defaults to the default profile
+# shellcheck disable=SC2032
 ff(){
     SOCKS_PORT="${1:-8888}"
     FF_PROFILE="${2:-"*.default"}"
@@ -18,7 +19,7 @@ ff(){
         FF_PROFILE="$(dirname "$f")"
         break
     done
-
+    # shellcheck disable=SC2033
     screen -d -S "ff" -m bash -c "$FF --profile \"$FF_PROFILE\""
 }
 
