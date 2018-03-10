@@ -1,6 +1,6 @@
 #!/bin/bash
 figlet -f sblood "$(hostname -s)" | lolcat --force | head -n -1
-printf '=%.0s' $(seq 1 "$(figlet -f sblood "$(hostname -s)" | wc -L)") | lolcat --force
+printf '=%.0s' "$(seq 1 "$(figlet -f sblood "$(hostname -s)" | wc -L)")" | lolcat --force
 echo
 echo -e "Date\\t\\t$(date)"
 echo -e "Default IP\\t$(ip route show | grep ^default | awk '{print $3}')"
