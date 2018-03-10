@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.4-jessie-browsers
+    steps:
+      - checkout
+      - run: sudo su -c 'echo "deb http://archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe" >> /etc/apt/sources.list'
+      - run: sudo apt-get -q update && sudo apt-get -qy install shellcheck make bash
+      - run: git clone https://github.com/sstephenson/bats.git && sudo ./bats/install.sh /usr/local
+      - run: make
