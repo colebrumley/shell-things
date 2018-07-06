@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BACKUP_LOCATION=~/Drive/ssh_key_backup_encrypted.tar.gz
+BACKUP_LOCATION=~/Documents/ssh_key_backup_encrypted.tar.gz
 PREVIOUS_BACKUP="${BACKUP_LOCATION}.old"
 
 

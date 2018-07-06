@@ -7,7 +7,7 @@
 # without all the bin/activate garbage.
 
 setpy(){
-    for d in $HOME/py*/bin; do 
+    for d in "$HOME"/py*/bin; do 
         PATH="${PATH//$d:}"
     done
     VIRTUAL_ENV="$HOME/py$1"
