@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Helper func for writing something to STDERR
-err() { >&2 echo "${@}"; }
+err() { >&2 echo "${fgRed}${*}${tReset}"; }
 
 # Helper func for bailing out of a script
 err_out() { err "${@}"; exit 1; }
