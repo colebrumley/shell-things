@@ -1,6 +1,8 @@
 #!/bin/bash
 
-BACKUP_LOCATION=~/Documents/ssh_key_backup_encrypted.tar.gz
+# This is deprecated in favor of a Keybase-encrypted repo
+
+BACKUP_LOCATION=~/lib/bak/ssh_key_backup_encrypted.tar.gz
 PREVIOUS_BACKUP="${BACKUP_LOCATION}.old"
 
 KEY_LOCATION=/opt/secure/ssh_key_tar.password

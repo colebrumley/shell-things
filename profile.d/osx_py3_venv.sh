@@ -20,7 +20,7 @@ export -f setpy
 pypip_bak(){
     local THISPY
     THISPY="$(python -V 2>&1 | awk '{print $2}')"
-    pip freeze > "$HOME/lib/python${THISPY:0:1}_pip_freeze.txt"
+    pip freeze > "$HOME/lib/bak/python${THISPY:0:1}_pip_freeze.txt"
 }
 export -f pypip_bak
 
@@ -43,7 +43,7 @@ pyupdate_brew(){
             /usr/local/bin/virtualenv -p "$src_str" "$HOME/lib/py$ver"
             ln -s "$HOME/lib/py$ver" "$HOME/py$ver"
             setpy "$ver"
-            pip install -r "$HOME/lib/python${major_version}_pip_freeze.txt"
+            pip install -r "$HOME/lib/bak/python${major_version}_pip_freeze.txt"
         fi
     done
 }
