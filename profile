@@ -12,7 +12,7 @@ is_installed() { command -v "${1}" >/dev/null 2>&1 || return 1; }
 # Adds a directory to $PATH, making sure it's not duplicated
 add_to_path() {
     local dir=$1
-    PATH="${PATH//$dir:/}"
+    PATH="${PATH//"$dir:"/}"
     PATH="$dir:$PATH"
     export PATH
 }
