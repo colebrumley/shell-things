@@ -16,7 +16,7 @@ ae() { printenv | grep AWS; }
 alias awsenv=ae
 
 #shellcheck disable=2016
-ssm_by_name() {
+ssm() {
 	local TARGET=
 	readarray -t INSTANCES < <(aws ec2 describe-instances \
 		--query 'Reservations[].Instances[].[Tags[?Key==`Name`] | [0].Value, InstanceId]' \
@@ -33,4 +33,3 @@ ssm_by_name() {
 	done
 	[[ -z $TARGET ]] || aws ssm start-session --target "$TARGET"
 }
-alias ssm=ssm_by_name
