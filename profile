@@ -17,6 +17,23 @@ add_to_path() {
     export PATH
 }
 
+exit_code_emojifier() {
+    local status_code="$?"
+    if [[ $status_code == 0 ]]; then
+        good_emojis=(😎 👍 🙌 🤘)
+        good_emoji_count="${#good_emojis[@]}"
+        echo "${good_emojis[$(( RANDOM % good_emoji_count ))]}"
+    elif [[ $status_code == 1 ]]; then
+        bad_emojis=(💩 🚽 🗑 👺 🖕)
+        bad_emjoi_count="${#bad_emojis[@]}"
+        echo "${bad_emojis[$(( RANDOM % bad_emjoi_count ))]}"
+    else
+        not_one_or_zero_emojis=(🤔 🤷‍♂️ 🧐)
+        not_one_or_zero_emoji_count="${#not_one_or_zero_emojis[@]}"
+        echo "${not_one_or_zero_emojis[$(( RANDOM % not_one_or_zero_emoji_count ))]} ($status_code)"
+    fi
+}
+
 # Set some standard color vars if this is an interactive session
 if [[ $- == *i* ]] && is_installed tput; then
     fgRed=$(tput setaf 1)     fgGreen=$(tput setaf 2) \
@@ -36,9 +53,9 @@ OS=$(uname -s)
 ARCH=$(uname -m)
 VER=$(uname -r)
 
-# PS1 is in the format `[ last_exit_code ] user@host:workdir`
+# PS1 is in the format `[ last_exit_code_emoji ] user@host:workdir`
 # shellcheck disable=SC1117
-[[ $SHELL =~ /bash$ ]] && PS1="\[$fgGreen\][ \$? ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
+[[ $SHELL =~ /bash$ ]] && PS1="\[$fgGreen\][ \$(exit_code_emojifier) ] \u@\h\[$fgBlue\]\[$fgRed\]:\[$fgBlue\]\W\\$ \[$tReset\]"
 
 # Add /usr/local/sbin to PATH
 add_to_path /usr/local/sbin
@@ -49,7 +66,7 @@ add_to_path "$HOME/bin"
 export PATH OS ARCH VER PS1
 
 # Export global funcs (for ease of bats testing)
-export -f err err_out is_installed add_to_path
+export -f err err_out is_installed add_to_path exit_code_emojifier
 
 # Include ~/.profile.d/*, and let shellcheck ignore it
 # shellcheck disable=SC1090
