@@ -1,6 +1,4 @@
 #!/bin/bash
-GNU_BIN=/usr/local/opt/coreutils/libexec/gnubin
-GNU_MAN=/usr/local/opt/coreutils/libexec/gnuman
 
 cfg_osx_gnu(){
     add_to_path "$GNU_BIN"
@@ -9,5 +7,12 @@ cfg_osx_gnu(){
     export MANPATH
 }
 
+if is_installed brew; then
+    GNU_BIN="$BREW_PREFIX"/opt/coreutils/libexec/gnubin
+    GNU_MAN="$BREW_PREFIX"/opt/coreutils/libexec/gnuman
+    [[ -d "$GNU_BIN" ]] && cfg_osx_gnu
+fi
+
+
 # If on OSX and GNU coreutils is installed, use them over the BSD variants
-[[ -d "$GNU_BIN" ]] && cfg_osx_gnu
+

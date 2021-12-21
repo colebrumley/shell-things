@@ -63,6 +63,13 @@ add_to_path /usr/local/sbin
 # Add ~/bin to PATH
 add_to_path "$HOME/bin"
 
+# shellcheck disable=SC2155
+if [[ -d /opt/homebrew ]]; then
+    add_to_path "/opt/homebrew/bin"
+    export BREW_PREFIX="$(brew --prefix)"
+fi
+
+
 export PATH OS ARCH VER PS1
 
 # Export global funcs (for ease of bats testing)
