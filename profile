@@ -69,6 +69,12 @@ if [[ -d /opt/homebrew ]]; then
     export BREW_PREFIX="$(brew --prefix)"
 fi
 
+# shellcheck disable=SC2155
+if [[ -d /usr/local/Homebrew ]]; then
+    add_to_path "/usr/local/Homebrew/bin"
+    export BREW_PREFIX="$(brew --prefix)"
+fi
+
 
 export PATH OS ARCH VER PS1
 
