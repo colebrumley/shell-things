@@ -8,7 +8,7 @@ export ZSH="/Users/cole/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -64,6 +64,8 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+ZSH_PYENV_QUIET=true
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
