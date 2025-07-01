@@ -4,3 +4,4 @@ alias exut=exit
 alias exity=exit
 alias exiy=exit
 is_installed thefuck && eval "$(thefuck --alias)"
+is_installed podman && alias docker=podman

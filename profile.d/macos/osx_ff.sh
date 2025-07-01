@@ -23,4 +23,4 @@ ff(){
     screen -d -S "ff" -m bash -c "$FF --profile \"$FF_PROFILE\""
 }
 
-export -f ff
+
